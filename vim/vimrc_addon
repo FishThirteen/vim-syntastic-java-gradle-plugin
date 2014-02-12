@@ -1,0 +1,24 @@
+"--Find syntastic config files in partents directories
+function s:findAbsoluteNameInParentRecursively(fileName) 
+  let s:tempFileName = a:fileName
+  let s:tempDirName = getcwd()
+
+  while s:tempDirName != "/"
+    if filereadable(glob(s:tempFileName))
+      return s:tempFileName
+    else
+      let s:tempDirName = fnamemodify(s:tempDirName, ":h")  
+      let s:tempFileName = s:tempDirName . "/" . a:fileName
+    endif  
+  endwhile
+
+  return 0
+endfunction
+
+let s:syntasticSettingFileName = ".syntastic-classpath"
+let s:configFileName = s:findAbsoluteNameInParentRecursively(s:syntasticSettingFileName)
+
+if filereadable(s:configFileName)
+    let g:syntastic_java_javac_config_file_enabled = 1
+    let g:syntastic_java_javac_config_file = s:configFileName
+endif
