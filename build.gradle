@@ -1,0 +1,15 @@
+repositories {
+  mavenCentral()
+}
+
+apply plugin: 'groovy'
+
+dependencies {
+  compile gradleApi()
+  compile localGroovy()
+}
+
+jar.version = "1.0.0"
+
+
+
