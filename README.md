@@ -31,7 +31,7 @@ add following code to your project's `build.gradle` file
 
 Run `gradle vimSyntasticJava` in your project, the `.syntastic-classpath` will be created in the proejct root directory.
 
-copy the all content in `vim/vimrc_addon` to your .vimrc file, the vim will recursively find the `.syntastic-classpath` file.
+copy the all content in `vim/vimrc_addon` in current project to your .vimrc file, the vim will recursively find the `.syntastic-classpath` file.
 
 
 
