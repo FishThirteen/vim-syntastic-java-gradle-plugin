@@ -5,7 +5,7 @@ import org.gradle.api.Project
 
 class VimSyntasticJavaPlugin implements Plugin<Project> {
   void apply(Project project) {
-    project.extensions.create("vimSyntasticJava", SyntasticData)
+    project.extensions.create("vimSyntasticData", VimSyntasticData)
 
     def classPathCollection = new HashSet<String>()
 
@@ -28,11 +28,11 @@ class VimSyntasticJavaPlugin implements Plugin<Project> {
         addPath(proj) 
       }
 
-      new File(project.projectDir.absolutePath + "/" + "${project.syntastic.classpathFile}").text = classPathCollection.collect().join("\n")
+      new File(project.projectDir.absolutePath + "/" + "${project.vimSyntasticData.classpathFile}").text = classPathCollection.collect().join("\n")
     }
   }
 } 
 
-class SyntasticData {
+class VimSyntasticData {
   def String classpathFile = ".syntastic-classpath"
 }
