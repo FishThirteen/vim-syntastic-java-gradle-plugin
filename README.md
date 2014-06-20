@@ -11,10 +11,31 @@ run `gradle build` and produce the `vim-syntastic-java-gradle-plugin-version.jar
 
 How to use
 --------------------------------
+configure your project
+
     cd your-project-directoory
     mkdir libs
     copy vim-syntastic-java-gradle-plugin-version.jar to libs
+
+
+add following code to your project build.gradle
+
+    buildscript {
+        dependencies {
+            classpath files("libs/vim-syntastic-java-gradle-plugin-version.jar")
+        }
+    }
     
+    apply plugin: 'vimsyntasticjava'
+
+
+Run `gradle vimSyntasticJava` in your project, the `.syntastic-classpath` will be created in the proejct directory.
+
+copy the all content in `vim/vimrc_addon` to your .vimrc file, the vim will recursively find the `.syntastic-classpath` file.
+
+
+
+
     
 
 
